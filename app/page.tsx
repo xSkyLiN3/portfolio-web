@@ -2,17 +2,50 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Desarrollo de software y camino hacia AI/ML",
+  title: "Software, datos y camino hacia AI/ML",
   description:
-    "Portafolio de Cristóbal Vergara, estudiante de Ingeniería en Informática con proyectos propios en Python, TypeScript, PostgreSQL e inteligencia artificial aplicada.",
+    "Portafolio de Cristóbal Vergara, estudiante de Ingeniería en Informática con una demo pública de machine learning y proyectos propios de software.",
 };
 
 const projects = [
+  {
+    eyebrow: "PROYECTO PRINCIPAL · MACHINE LEARNING",
+    title: "Machine Failure Risk Classifier",
+    status: "Demo pública verificada",
+    statusTone: "public",
+    featured: true,
+    wide: true,
+    description:
+      "Sistema educativo de machine learning que clasifica casos según riesgo de falla a partir del dataset sintético AI4I. Incluye entrenamiento reproducible, prevención explícita de leakage, holdout sellado, API FastAPI y despliegue endurecido con Docker.",
+    note:
+      "Resultado final: average precision 0,650 y recall 0,735 sobre un holdout sellado de 2.000 filas. La puntuación no es una probabilidad calibrada; es evidencia técnica reproducible, no una validación para maquinaria real ni uso industrial.",
+    stack: ["Python", "scikit-learn", "FastAPI", "Docker", "pytest", "GitHub Actions"],
+    links: [
+      {
+        label: "Probar demo",
+        href: "https://ml.nightstrike.cloud",
+      },
+      {
+        label: "Ver repositorio",
+        href: "https://github.com/xSkyLiN3/predictive-maintenance-ml",
+      },
+      {
+        label: "Leer Model Card",
+        href: "https://github.com/xSkyLiN3/predictive-maintenance-ml/blob/main/docs/MODEL_CARD.md",
+      },
+      {
+        label: "Release v1.0.0",
+        href: "https://github.com/xSkyLiN3/predictive-maintenance-ml/releases/tag/v1.0.0",
+      },
+    ],
+  },
   {
     eyebrow: "SISTEMA APLICADO",
     title: "Operación Control",
     status: "Piloto privado",
     statusTone: "private",
+    featured: false,
+    wide: false,
     description:
       "Sistema de gestión operativa desarrollado con Python, Flask y PostgreSQL. El piloto me ha permitido trabajar con permisos por rol, auditoría, exportaciones, despliegue y recuperación operativa.",
     note:
@@ -24,6 +57,8 @@ const projects = [
     title: "PortfolioControl",
     status: "Sin demo pública todavía",
     statusTone: "development",
+    featured: false,
+    wide: false,
     description:
       "Aplicación web y móvil para organizar y analizar información de inversiones. Integra una base PostgreSQL, control de acceso e IA aplicada mediante OpenAI API.",
     note:
@@ -35,6 +70,8 @@ const projects = [
     title: "Weapon Inspector",
     status: "Código y release públicos",
     statusTone: "public",
+    featured: false,
+    wide: true,
     description:
       "Plugin de AMX Mod X para Counter-Strike 1.6. Analiza secuencias de modelos y reproduce animaciones de inspección mediante configuración, caché y una API para otros plugins.",
     note:
@@ -55,24 +92,24 @@ const projects = [
 
 const skillGroups = [
   {
-    label: "USO PRÁCTICO",
-    title: "Lenguajes y datos",
-    items: ["Python", "TypeScript", "SQL", "PostgreSQL", "Flask", "Next.js"],
+    label: "DESARROLLO",
+    title: "Lenguajes, web y datos",
+    items: ["Python", "TypeScript", "SQL", "PostgreSQL", "FastAPI", "Flask", "Next.js"],
   },
   {
-    label: "DESPLIEGUE",
-    title: "Infraestructura",
-    items: ["Docker", "Linux", "Nginx", "VPS", "respaldos y rollback"],
+    label: "CALIDAD Y DESPLIEGUE",
+    title: "Entrega reproducible",
+    items: ["pytest", "GitHub Actions", "Docker", "Linux", "Nginx", "rollback"],
   },
   {
-    label: "IA APLICADA",
-    title: "Integración mediante API",
-    items: ["OpenAI API", "salidas estructuradas", "validación", "caché"],
+    label: "MACHINE LEARNING",
+    title: "Práctica con evidencia",
+    items: ["scikit-learn", "pandas", "validación", "métricas", "prevención de leakage"],
   },
   {
     label: "DIRECCIÓN ACTUAL",
-    title: "En aprendizaje",
-    items: ["Estadística", "ciencia de datos", "machine learning", "evaluación con métricas"],
+    title: "Base en expansión",
+    items: ["Estadística", "ciencia de datos", "ML engineering", "evaluación responsable"],
   },
 ] as const;
 
@@ -103,15 +140,23 @@ export default function Home() {
         <section className="hero" id="inicio">
           <div className="hero-copy">
             <p className="eyebrow">CRISTÓBAL VERGARA · INGENIERÍA EN INFORMÁTICA</p>
-            <h1>Construyo software mientras desarrollo mi camino hacia AI/ML Engineering.</h1>
+            <h1>Construyo software reproducible y avanzo hacia AI/ML Engineering.</h1>
             <p className="lede">
-              Estudiante de 4.º semestre con experiencia práctica en proyectos
-              propios usando Python, TypeScript y PostgreSQL. Me interesa
-              convertir datos e inteligencia artificial en soluciones útiles,
-              confiables y bien construidas.
+              Estudiante de 4.º semestre con proyectos propios en Python,
+              TypeScript y PostgreSQL. Mi trabajo principal es una demo pública
+              de machine learning con modelo, API, pruebas, contenedor y métricas
+              verificables.
             </p>
             <div className="hero-actions">
-              <a className="button primary" href="#proyectos">Ver proyectos</a>
+              <a
+                className="button primary"
+                href="https://ml.nightstrike.cloud"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Probar demo ML <span aria-hidden="true">↗</span>
+              </a>
+              <a className="button secondary" href="#proyectos">Ver proyectos</a>
               <a className="button secondary" href="/CV_Cristobal_Vergara.pdf" download>
                 Descargar CV
               </a>
@@ -130,10 +175,10 @@ export default function Home() {
             <div className="portrait-grid" aria-hidden="true" />
             <div className="portrait-frame">
               <Image
-                src="/cristobal-vergara.png"
+                src="/cristobal-vergara.webp"
                 alt="Retrato profesional de Cristóbal Vergara"
-                width={1122}
-                height={1402}
+                width={900}
+                height={1125}
                 priority
                 unoptimized
               />
@@ -148,8 +193,8 @@ export default function Home() {
         <section className="context-strip" aria-label="Resumen profesional">
           <div><strong>4.º semestre</strong><span>de 8 en Ingeniería Informática</span></div>
           <div><strong>Python · TypeScript</strong><span>PostgreSQL · SQL</span></div>
-          <div><strong>Proyectos propios</strong><span>software aplicado y despliegue</span></div>
-          <div><strong>AI/ML</strong><span>dirección y aprendizaje activo</span></div>
+          <div><strong>Demo ML pública</strong><span>modelo · API · Docker · CI</span></div>
+          <div><strong>AI/ML Engineering</strong><span>dirección profesional en desarrollo</span></div>
         </section>
 
         <section className="about section-shell" aria-labelledby="about-title">
@@ -160,16 +205,16 @@ export default function Home() {
           <div className="about-copy">
             <p>
               Soy estudiante de Ingeniería en Informática en la Universidad
-              Bernardo O&apos;Higgins. He desarrollado aplicaciones propias que me
-              han permitido trabajar con backend, frontend, bases de datos,
-              autenticación, permisos, despliegue en VPS e integración de IA
-              mediante API.
+              Bernardo O&apos;Higgins. Aprendo construyendo proyectos propios que
+              abarcan backend, frontend, bases de datos, autenticación,
+              despliegue en VPS y, más recientemente, un sistema de machine
+              learning reproducible de extremo a extremo.
             </p>
             <p>
-              Actualmente estoy reforzando Python, estadística, ciencia de datos
-              y machine learning para avanzar de forma responsable hacia AI/ML
-              Engineering. Prefiero mostrar cada proyecto con su estado real y
-              evidencia comprobable.
+              Mi objetivo es avanzar hacia AI/ML Engineering con una base sólida
+              de software, datos y evaluación. Por eso publico métricas,
+              limitaciones y decisiones técnicas, y distingo con claridad entre
+              una demo educativa, un piloto privado y un producto aún en desarrollo.
             </p>
           </div>
         </section>
@@ -182,15 +227,20 @@ export default function Home() {
                 <h2 id="projects-title">Proyectos con contexto y estado real.</h2>
               </div>
               <p>
-                Sin demos de escaparate que llevan a un login. Cada proyecto
-                explica qué existe hoy, qué aprendí y qué falta antes de abrirlo.
+                La demo principal puede probarse sin registro. Los demás proyectos
+                explican qué existe hoy, qué aprendí y por qué algunos accesos
+                permanecen privados.
               </p>
             </div>
 
             <div className="projects-grid">
               {projects.map((project, index) => (
                 <article
-                  className={`project-card ${index === 2 ? "project-card-wide" : ""}`}
+                  className={[
+                    "project-card",
+                    project.featured ? "project-card-featured" : "",
+                    project.wide ? "project-card-wide" : "",
+                  ].filter(Boolean).join(" ")}
                   key={project.title}
                 >
                   <div className="project-topline">
@@ -226,8 +276,8 @@ export default function Home() {
               <h2 id="journey-title">Una dirección clara, sin atajos.</h2>
             </div>
             <p>
-              Mi objetivo no es usar AI/ML como etiqueta, sino construir la base
-              matemática y de software necesaria para trabajar bien con modelos y datos.
+              Mi objetivo no es usar AI/ML como etiqueta, sino demostrar una base
+              creciente de software, datos, evaluación y despliegue responsable.
             </p>
           </div>
 
@@ -242,7 +292,7 @@ export default function Home() {
             </li>
             <li>
               <span className="journey-index">03</span>
-              <div><h3>Datos y machine learning</h3><p>Estadística, ciencia de datos, baselines, validación y métricas como siguiente etapa.</p></div>
+              <div><h3>Datos y machine learning</h3><p>Primer sistema reproducible con baseline, prevención de leakage, holdout sellado, métricas y demo pública.</p></div>
             </li>
           </ol>
         </section>
@@ -308,8 +358,12 @@ export default function Home() {
             </p>
             <div className="contact-actions">
               <a className="button button-light" href="mailto:cvarvergara@gmail.com">Enviar correo</a>
-              <a href="https://www.linkedin.com/in/cristobal-vergarav/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
-              <a href="https://github.com/xSkyLiN3" target="_blank" rel="noreferrer">GitHub ↗</a>
+              <a href="https://www.linkedin.com/in/cristobal-vergarav/" target="_blank" rel="noreferrer">
+                LinkedIn <span aria-hidden="true">↗</span>
+              </a>
+              <a href="https://github.com/xSkyLiN3" target="_blank" rel="noreferrer">
+                GitHub <span aria-hidden="true">↗</span>
+              </a>
             </div>
           </div>
         </section>

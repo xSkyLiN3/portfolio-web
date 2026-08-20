@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/xSkyLiN3/portfolio-web/actions/workflows/ci.yml/badge.svg)](https://github.com/xSkyLiN3/portfolio-web/actions/workflows/ci.yml)
 
-Web personal y CV profesional de [Cristóbal Vergara](https://nightstrike.cloud), estudiante de Ingeniería en Informática con proyectos propios de software y una dirección de aprendizaje hacia AI/ML Engineering.
+Web personal y CV profesional de [Cristóbal Vergara](https://nightstrike.cloud), estudiante de Ingeniería en Informática con una demo pública de machine learning, proyectos propios de software y una dirección de aprendizaje hacia AI/ML Engineering.
 
 ![Vista social del portafolio](public/og.png)
 
@@ -10,16 +10,18 @@ Web personal y CV profesional de [Cristóbal Vergara](https://nightstrike.cloud)
 
 El sitio está diseñado para presentar evidencia sin exagerar el nivel profesional actual:
 
-- AI/ML se comunica como objetivo y aprendizaje activo, no como cargo alcanzado.
+- AI/ML se comunica como dirección profesional en desarrollo, no como cargo alcanzado.
+- Machine Failure Risk Classifier es el proyecto principal: demo pública, código, Model Card y release verificables.
+- Sus métricas se presentan junto a su contexto: holdout sellado de 2.000 filas y dataset sintético sin validación industrial.
 - Operación Control aparece como piloto privado.
 - PortfolioControl aparece en desarrollo y sin demo pública.
-- Weapon Inspector es el proyecto histórico con código y release públicos.
+- Weapon Inspector aparece como proyecto histórico secundario con código y release públicos.
 - No se publican accesos internos, teléfono, RUT, dirección ni datos operativos.
 
 ## Contenido
 
 - Presentación y posicionamiento profesional.
-- Estado real de tres proyectos propios.
+- Estado real de cuatro proyectos propios.
 - Trayectoria desde fundamentos de software hacia datos y machine learning.
 - Tecnologías agrupadas por evidencia de uso.
 - Formación universitaria y credencial pública de Kaggle.
@@ -61,6 +63,8 @@ npm run export:static
 ```
 
 El resultado se genera en `deploy/`. El sitio público no necesita Node.js, base de datos ni un proceso de aplicación en el servidor.
+
+El destino canónico es el VPS en `nightstrike.cloud`, publicado como una release estática e inmutable. La configuración de OpenAI Sites se conserva para compatibilidad de desarrollo, pero no sustituye el dominio principal.
 
 ## Generar el CV
 

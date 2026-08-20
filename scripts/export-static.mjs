@@ -1,10 +1,26 @@
 import assert from "node:assert/strict";
+import { execFileSync } from "node:child_process";
 import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const outputRoot = path.resolve(projectRoot, "deploy");
+const packageMetadata = JSON.parse(
+  await readFile(path.join(projectRoot, "package.json"), "utf8"),
+);
+
+assert.equal(typeof packageMetadata.version, "string");
+assert.match(packageMetadata.version, /^\d+\.\d+\.\d+$/);
+
+const releaseCommit =
+  process.env.GITHUB_SHA ??
+  process.env.PORTFOLIO_COMMIT ??
+  execFileSync("git", ["-C", projectRoot, "rev-parse", "HEAD"], {
+    encoding: "utf8",
+  }).trim();
+
+assert.match(releaseCommit, /^[0-9a-f]{40}$/i);
 
 assert.equal(path.dirname(outputRoot), projectRoot);
 assert.equal(path.basename(outputRoot), "deploy");
@@ -37,6 +53,9 @@ html = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "");
 html = html.replace(/<link\b[^>]*rel=["']modulepreload["'][^>]*>/gi, "");
 
 assert.match(html, /Cristóbal Vergara/);
+assert.match(html, /Machine Failure Risk Classifier/);
+assert.match(html, /https:\/\/ml\.nightstrike\.cloud/);
+assert.match(html, /dataset sintético AI4I/);
 assert.match(html, /Operación Control/);
 assert.doesNotMatch(html, /<script\b/i);
 
@@ -53,7 +72,11 @@ await cp(
 await writeFile(path.join(outputRoot, "index.html"), html, "utf8");
 await writeFile(
   path.join(outputRoot, "site-version.json"),
-  `${JSON.stringify({ site: "cristobal-vergara-portfolio", version: "1.0.0" })}\n`,
+  `${JSON.stringify({
+    site: "cristobal-vergara-portfolio",
+    version: packageMetadata.version,
+    commit: releaseCommit,
+  })}\n`,
   "utf8",
 );
 

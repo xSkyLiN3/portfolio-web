@@ -196,7 +196,7 @@ header_left = [
     P("Cristóbal Vergara", "name"),
     Spacer(1, 1.2 * mm),
     P(
-        "Estudiante de Ingeniería en Informática | Desarrollo de software e interés en AI/ML",
+        "Estudiante de Ingeniería en Informática | Software, datos y machine learning",
         "title",
     ),
 ]
@@ -235,22 +235,23 @@ story.extend(
     [
         section_heading("Perfil"),
         P(
-            "Estudiante de Ingeniería en Informática, actualmente en 4.º semestre, con experiencia práctica desarrollando proyectos propios con Python, TypeScript y PostgreSQL. He trabajado con aplicaciones web, control de acceso, despliegue en VPS e integración de IA mediante API. Busco seguir creciendo en ingeniería de software, datos y machine learning con proyección hacia AI/ML Engineering."
+            "Estudiante de Ingeniería en Informática, actualmente en 4.º semestre, con experiencia práctica desarrollando proyectos propios con Python, TypeScript y PostgreSQL. Construí y publiqué un sistema educativo de machine learning con entrenamiento reproducible, API, pruebas y despliegue en Docker. Busco seguir creciendo en software, datos y evaluación de modelos con proyección hacia AI/ML Engineering."
         ),
         Spacer(1, 3 * mm),
         section_heading("Proyectos seleccionados"),
+        project(
+            "Machine Failure Risk Classifier",
+            '<a href="https://ml.nightstrike.cloud" color="#2563EB">PROYECTO PRINCIPAL - DEMO PÚBLICA</a>',
+            "Desarrollé un sistema educativo de clasificación de riesgo con scikit-learn y FastAPI: validación sin leakage, holdout sellado, abstención fuera de la envolvente de referencia, pruebas automatizadas, CI multiplataforma y contenedor endurecido. Logró average precision 0,650 y recall 0,735 sobre 2.000 filas sintéticas reservadas; no está validado para uso industrial.",
+            "Python | scikit-learn | FastAPI | pytest | Docker | GitHub Actions",
+            "https://github.com/xSkyLiN3/predictive-maintenance-ml",
+        ),
+        Spacer(1, 3 * mm),
         project(
             "Operación Control",
             "PROYECTO PROPIO - PILOTO PRIVADO",
             "Desarrollé un sistema de gestión operativa con Python, Flask y PostgreSQL, incorporando control de acceso por roles, auditoría, exportaciones y soporte de despliegue y recuperación en VPS. La información operativa y los datos no se exponen públicamente.",
             "Python | Flask | PostgreSQL | Docker | Linux | Nginx",
-        ),
-        Spacer(1, 3 * mm),
-        project(
-            "PortfolioControl",
-            "PROYECTO PROPIO - EN DESARROLLO",
-            "Desarrollo una aplicación web y móvil para organizar y analizar información de inversiones. Implementé control de acceso e integración de OpenAI API con respuestas estructuradas y validación. El producto continúa en estabilización y aún no dispone de una demo pública.",
-            "TypeScript | Next.js | Expo | PostgreSQL/Supabase | OpenAI API",
         ),
         Spacer(1, 3 * mm),
         project(
@@ -269,11 +270,11 @@ skills = Table(
     [
         [
             P("<b>Lenguajes y datos</b><br/>Python | TypeScript | SQL | PostgreSQL", "small"),
-            P("<b>Web</b><br/>Flask | Next.js", "small"),
+            P("<b>Web y API</b><br/>FastAPI | Flask | Next.js", "small"),
         ],
         [
-            P("<b>Infraestructura</b><br/>Docker | Linux | Nginx | VPS", "small"),
-            P("<b>IA aplicada</b><br/>OpenAI API | salidas estructuradas | validación", "small"),
+            P("<b>Calidad e infraestructura</b><br/>pytest | CI | Docker | Linux | Nginx", "small"),
+            P("<b>Machine learning</b><br/>scikit-learn | pandas | validación | métricas", "small"),
         ],
     ],
     colWidths=[89 * mm, 89 * mm],

@@ -63,7 +63,7 @@ a {
 }
 
 a:focus-visible {
-  outline: 3px solid #93c5fd;
+  outline: 3px solid var(--blue-dark);
   outline-offset: 4px;
   border-radius: 5px;
 }
@@ -468,6 +468,35 @@ h3 {
   grid-column: 1 / -1;
 }
 
+.project-card-featured {
+  min-height: 500px;
+  grid-column: 1 / -1;
+  border-color: #93c5fd;
+  background:
+    radial-gradient(circle at 88% 12%, rgba(37, 99, 235, 0.11), transparent 20rem),
+    linear-gradient(135deg, #ffffff 0%, #f8fbff 100%);
+  box-shadow: 0 18px 45px rgba(37, 99, 235, 0.08);
+}
+
+.project-card-featured h3 {
+  max-width: 780px;
+  font-size: clamp(30px, 4vw, 42px);
+}
+
+.project-card-featured .project-description {
+  max-width: 860px;
+  font-size: 17px;
+}
+
+.project-card-featured .project-note {
+  max-width: 900px;
+  padding: 13px 16px;
+  border-left-color: #34d399;
+  border-radius: 0 8px 8px 0;
+  background: rgba(236, 253, 245, 0.72);
+  color: #33584e;
+}
+
 .project-topline {
   display: flex;
   align-items: center;
@@ -476,7 +505,7 @@ h3 {
 }
 
 .project-number {
-  color: #94a3b8;
+  color: var(--muted-light);
   font-family: var(--font-geist-mono), monospace;
   font-size: 13px;
 }
@@ -484,7 +513,7 @@ h3 {
 .status {
   padding: 7px 10px;
   border-radius: 999px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 720;
   line-height: 1;
 }
@@ -503,7 +532,7 @@ h3 {
 .card-eyebrow {
   margin: 62px 0 15px;
   color: var(--teal);
-  font-size: 10px;
+  font-size: 11px;
 }
 
 .project-card-wide .card-eyebrow {
@@ -544,7 +573,7 @@ h3 {
   background: #f8fafc;
   color: #475569;
   font-family: var(--font-geist-mono), monospace;
-  font-size: 10px;
+  font-size: 11px;
 }
 
 .project-links {
@@ -655,7 +684,7 @@ h3 {
 .education-meta {
   padding-top: 5px;
   color: var(--muted-light);
-  font-size: 9px;
+  font-size: 11px;
   line-height: 1.6;
 }
 
@@ -749,10 +778,6 @@ h3 {
 }
 
 @media (max-width: 920px) {
-  .main-nav {
-    display: none;
-  }
-
   .hero {
     min-height: auto;
     padding-top: 70px;
@@ -786,6 +811,10 @@ h3 {
 }
 
 @media (max-width: 700px) {
+  .main-nav {
+    display: none;
+  }
+
   .header-inner,
   .hero,
   .context-strip,
@@ -849,6 +878,11 @@ h3 {
   }
 
   .project-card-wide {
+    grid-column: auto;
+  }
+
+  .project-card-featured {
+    min-height: auto;
     grid-column: auto;
   }
 

@@ -19,32 +19,34 @@ export const metadata: Metadata = {
     template: "%s · Cristóbal Vergara",
   },
   description:
-    "Estudiante de Ingeniería en Informática con proyectos propios de software y una dirección clara hacia AI/ML Engineering.",
+    "Estudiante de Ingeniería en Informática con una demo pública de machine learning, proyectos propios de software y una dirección clara hacia AI/ML Engineering.",
   alternates: {
     canonical: "/",
   },
+  authors: [{ name: "Cristóbal Vergara", url: "https://nightstrike.cloud" }],
+  creator: "Cristóbal Vergara",
   openGraph: {
     type: "website",
     locale: "es_CL",
     url: "/",
     siteName: "Cristóbal Vergara",
-    title: "Cristóbal Vergara — Software, datos y camino hacia AI/ML",
+    title: "Cristóbal Vergara — Software, datos y machine learning",
     description:
-      "Estudiante de Ingeniería en Informática con proyectos propios en Python, TypeScript y PostgreSQL.",
+      "Portafolio con una demo pública de machine learning y proyectos propios en Python, TypeScript y PostgreSQL.",
     images: [
       {
         url: "/og.png",
         width: 1731,
         height: 909,
-        alt: "Cristóbal Vergara — Software, Datos y AI/ML",
+        alt: "Cristóbal Vergara — Software, datos y machine learning",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cristóbal Vergara — Software, datos y camino hacia AI/ML",
+    title: "Cristóbal Vergara — Software, datos y machine learning",
     description:
-      "Estudiante de Ingeniería en Informática con proyectos propios en Python, TypeScript y PostgreSQL.",
+      "Portafolio con una demo pública de machine learning y proyectos propios en Python, TypeScript y PostgreSQL.",
     images: ["/og.png"],
   },
   icons: {
