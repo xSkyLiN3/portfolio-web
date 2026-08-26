@@ -66,6 +66,16 @@ El resultado se genera en `deploy/`. El sitio público no necesita Node.js, base
 
 El destino canónico es el VPS en `nightstrike.cloud`, publicado como una release estática e inmutable. La configuración de OpenAI Sites se conserva para compatibilidad de desarrollo, pero no sustituye el dominio principal.
 
+## Despliegue en VPS
+
+El sitio canónico se publica mediante el usuario SSH restringido `deploy`:
+
+```powershell
+.\scripts\deploy-vps.ps1
+```
+
+El script verifica el proyecto, genera `deploy/`, crea una release versionada y actualiza atómicamente el enlace `current`. El procedimiento, las comprobaciones y el rollback están documentados en [docs/deployment-vps.md](docs/deployment-vps.md).
+
 ## Generar el CV
 
 El archivo público está en `public/CV_Cristobal_Vergara.pdf`. La fuente reproducible utiliza ReportLab:
@@ -80,10 +90,11 @@ Después de generarlo, el PDF debe revisarse visualmente antes de reemplazar la 
 
 ```text
 app/                 página, layout y sistema visual
+docs/                guía operativa de despliegue y rollback
 public/              fotografía, CV, favicon y tarjeta social
-scripts/             generador reproducible del CV
+scripts/             exportación, despliegue y generación del CV
 tests/               comprobaciones del HTML renderizado
-.openai/hosting.json configuración de publicación
+.openai/hosting.json compatibilidad con el entorno de desarrollo
 ```
 
 ## Licencia y contenido personal
