@@ -11,31 +11,35 @@ const projects = [
   {
     eyebrow: "PROYECTO PRINCIPAL · MACHINE LEARNING",
     title: "Machine Failure Risk Classifier",
-    status: "Demo pública verificada",
+    status: "Demo pública disponible",
     statusTone: "public",
     featured: true,
     wide: true,
     description:
-      "Sistema educativo de machine learning que clasifica casos según riesgo de falla a partir del dataset sintético AI4I. Incluye entrenamiento reproducible, prevención explícita de leakage, holdout sellado, API FastAPI y despliegue endurecido con Docker.",
+      "Sistema educativo de machine learning que clasifica casos según riesgo de falla a partir del dataset sintético AI4I. Incluye entrenamiento reproducible, prevención explícita de leakage, holdout reservado, API FastAPI y despliegue reproducible con Docker.",
     note:
-      "Resultado final: average precision 0,650 y recall 0,735 sobre un holdout sellado de 2.000 filas. La puntuación no es una probabilidad calibrada; es evidencia técnica reproducible, no una validación para maquinaria real ni uso industrial.",
+      "Resultado final: average precision 0,650 y recall 0,735 sobre un holdout final reservado de 2.000 filas. La puntuación no es una probabilidad calibrada; es evidencia técnica reproducible, no una validación para maquinaria real ni uso industrial.",
     stack: ["Python", "scikit-learn", "FastAPI", "Docker", "pytest", "GitHub Actions"],
     links: [
       {
         label: "Probar demo",
         href: "https://ml.nightstrike.cloud",
+        external: true,
+      },
+      {
+        label: "Leer caso de estudio",
+        href: "/proyectos/machine-failure-risk-classifier/",
+        external: false,
       },
       {
         label: "Ver repositorio",
         href: "https://github.com/xSkyLiN3/predictive-maintenance-ml",
+        external: true,
       },
       {
         label: "Leer Model Card",
         href: "https://github.com/xSkyLiN3/predictive-maintenance-ml/blob/main/docs/MODEL_CARD.md",
-      },
-      {
-        label: "Release v1.0.0",
-        href: "https://github.com/xSkyLiN3/predictive-maintenance-ml/releases/tag/v1.0.0",
+        external: true,
       },
     ],
   },
@@ -47,23 +51,10 @@ const projects = [
     featured: false,
     wide: false,
     description:
-      "Sistema de gestión operativa desarrollado con Python, Flask y PostgreSQL. El piloto me ha permitido trabajar con permisos por rol, auditoría, exportaciones, despliegue y recuperación operativa.",
+      "Piloto privado de gestión operativa desarrollado con Python, Flask y PostgreSQL. En este proyecto trabajo con permisos por rol, auditoría, exportaciones y despliegue en VPS.",
     note:
-      "Los datos y el acceso permanecen privados. El caso público se preparará únicamente después de anonimizar toda la información.",
+      "Por confidencialidad, no hay demo ni datos públicos. Prepararé un caso anonimizado solo cuando pueda mostrar evidencia sin exponer información operativa.",
     stack: ["Python", "Flask", "PostgreSQL", "Docker", "Linux", "Nginx"],
-  },
-  {
-    eyebrow: "PRODUCTO EN DESARROLLO",
-    title: "PortfolioControl",
-    status: "Sin demo pública todavía",
-    statusTone: "development",
-    featured: false,
-    wide: false,
-    description:
-      "Aplicación web y móvil para organizar y analizar información de inversiones. Integra una base PostgreSQL, control de acceso e IA aplicada mediante OpenAI API.",
-    note:
-      "Ahora estoy estabilizando el producto y separando los datos reales de una futura experiencia de demostración segura.",
-    stack: ["TypeScript", "Next.js", "Expo", "PostgreSQL", "Supabase", "OpenAI API"],
   },
   {
     eyebrow: "PROYECTO PÚBLICO HISTÓRICO",
@@ -71,20 +62,22 @@ const projects = [
     status: "Código y release públicos",
     statusTone: "public",
     featured: false,
-    wide: true,
+    wide: false,
     description:
       "Plugin de AMX Mod X para Counter-Strike 1.6. Analiza secuencias de modelos y reproduce animaciones de inspección mediante configuración, caché y una API para otros plugins.",
     note:
-      "La versión 1.1.1 tiene compilación reproducible y correcciones verificadas; aún recomiendo una prueba final dentro de un servidor real.",
+      "Proyecto histórico que muestra trabajo con un ecosistema legado, configuración y CI. La release es pública; aún requiere una validación final dentro de un servidor real.",
     stack: ["Pawn", "AMX Mod X", "CI", "GitHub Actions"],
     links: [
       {
         label: "Ver repositorio",
         href: "https://github.com/xSkyLiN3/weapon-inspector-amx",
+        external: true,
       },
       {
         label: "Release v1.1.1",
         href: "https://github.com/xSkyLiN3/weapon-inspector-amx/releases/tag/v1.1.1",
+        external: true,
       },
     ],
   },
@@ -99,7 +92,7 @@ const skillGroups = [
   {
     label: "CALIDAD Y DESPLIEGUE",
     title: "Entrega reproducible",
-    items: ["pytest", "GitHub Actions", "Docker", "Linux", "Nginx", "rollback"],
+    items: ["pytest", "GitHub Actions", "Docker", "Linux", "Nginx"],
   },
   {
     label: "MACHINE LEARNING",
@@ -200,7 +193,7 @@ export default function Home() {
         <section className="about section-shell" aria-labelledby="about-title">
           <div>
             <p className="eyebrow">ACERCA DE</p>
-            <h2 id="about-title">Aprendo construyendo sistemas reales.</h2>
+            <h2 id="about-title">Aprendo construyendo proyectos completos y documentando sus límites.</h2>
           </div>
           <div className="about-copy">
             <p>
@@ -257,7 +250,12 @@ export default function Home() {
                   {"links" in project && (
                     <div className="project-links">
                       {project.links.map((link) => (
-                        <a key={link.href} href={link.href} target="_blank" rel="noreferrer">
+                        <a
+                          key={link.href}
+                          href={link.href}
+                          target={link.external ? "_blank" : undefined}
+                          rel={link.external ? "noreferrer" : undefined}
+                        >
                           {link.label} <span aria-hidden="true">↗</span>
                         </a>
                       ))}
@@ -288,11 +286,11 @@ export default function Home() {
             </li>
             <li>
               <span className="journey-index">02</span>
-              <div><h3>Sistemas aplicados</h3><p>Aplicaciones web, control de acceso, despliegue e integración de IA mediante API.</p></div>
+              <div><h3>Sistemas aplicados</h3><p>Aplicaciones web, control de acceso, bases de datos y despliegue de un piloto privado.</p></div>
             </li>
             <li>
               <span className="journey-index">03</span>
-              <div><h3>Datos y machine learning</h3><p>Primer sistema reproducible con baseline, prevención de leakage, holdout sellado, métricas y demo pública.</p></div>
+              <div><h3>Datos y machine learning</h3><p>Primer sistema reproducible con baseline, prevención de leakage, holdout reservado, métricas y demo pública.</p></div>
             </li>
           </ol>
         </section>

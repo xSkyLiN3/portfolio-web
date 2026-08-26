@@ -30,34 +30,57 @@ const workerUrl = pathToFileURL(workerPath);
 workerUrl.searchParams.set("export", `${Date.now()}`);
 const { default: worker } = await import(workerUrl.href);
 
-const response = await worker.fetch(
-  new Request("https://nightstrike.cloud/", {
-    headers: { accept: "text/html" },
-  }),
+const routes = [
   {
-    ASSETS: {
-      fetch: async () => new Response("Not found", { status: 404 }),
+    pathname: "/",
+    output: "index.html",
+    validate(html) {
+      assert.match(html, /Cristóbal Vergara/);
+      assert.match(html, /Machine Failure Risk Classifier/);
+      assert.match(html, /https:\/\/ml\.nightstrike\.cloud/);
+      assert.match(html, /dataset sintético AI4I/);
+      assert.match(html, /Operación Control/);
+      assert.match(html, /\/proyectos\/machine-failure-risk-classifier/);
     },
   },
   {
-    waitUntil() {},
-    passThroughOnException() {},
+    pathname: "/proyectos/machine-failure-risk-classifier",
+    output: "proyectos/machine-failure-risk-classifier/index.html",
+    validate(html) {
+      assert.match(html, /Clasificar riesgo de falla sin ocultar la incertidumbre\./);
+      assert.match(html, /Average Precision/);
+      assert.match(html, /50 fallos detectados/);
+      assert.match(html, /No está validado para maquinaria real ni decisiones de seguridad\./);
+      assert.match(html, /reports\/modeling\/b15bab7b54bc2e1f\/M3_REPORT\.md/);
+    },
   },
-);
+];
 
-assert.equal(response.status, 200);
-assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
+async function renderRoute(pathname) {
+  const response = await worker.fetch(
+    new Request(`https://nightstrike.cloud${pathname}`, {
+      headers: { accept: "text/html" },
+    }),
+    {
+      ASSETS: {
+        fetch: async () => new Response("Not found", { status: 404 }),
+      },
+    },
+    {
+      waitUntil() {},
+      passThroughOnException() {},
+    },
+  );
 
-let html = await response.text();
-html = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "");
-html = html.replace(/<link\b[^>]*rel=["']modulepreload["'][^>]*>/gi, "");
+  assert.equal(response.status, 200, `expected ${pathname} to render`);
+  assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
-assert.match(html, /Cristóbal Vergara/);
-assert.match(html, /Machine Failure Risk Classifier/);
-assert.match(html, /https:\/\/ml\.nightstrike\.cloud/);
-assert.match(html, /dataset sintético AI4I/);
-assert.match(html, /Operación Control/);
-assert.doesNotMatch(html, /<script\b/i);
+  let html = await response.text();
+  html = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "");
+  html = html.replace(/<link\b[^>]*rel=["']modulepreload["'][^>]*>/gi, "");
+  assert.doesNotMatch(html, /<script\b/i);
+  return html;
+}
 
 await rm(outputRoot, { recursive: true, force: true });
 await mkdir(outputRoot, { recursive: true });
@@ -69,7 +92,13 @@ await cp(
   { recursive: true },
 );
 
-await writeFile(path.join(outputRoot, "index.html"), html, "utf8");
+for (const route of routes) {
+  const html = await renderRoute(route.pathname);
+  route.validate(html);
+  const outputPath = path.join(outputRoot, route.output);
+  await mkdir(path.dirname(outputPath), { recursive: true });
+  await writeFile(outputPath, html, "utf8");
+}
 await writeFile(
   path.join(outputRoot, "site-version.json"),
   `${JSON.stringify({

@@ -12,16 +12,16 @@ El sitio está diseñado para presentar evidencia sin exagerar el nivel profesio
 
 - AI/ML se comunica como dirección profesional en desarrollo, no como cargo alcanzado.
 - Machine Failure Risk Classifier es el proyecto principal: demo pública, código, Model Card y release verificables.
-- Sus métricas se presentan junto a su contexto: holdout sellado de 2.000 filas y dataset sintético sin validación industrial.
+- Sus métricas se presentan junto a su contexto: holdout final reservado de 2.000 filas y dataset sintético sin validación industrial.
 - Operación Control aparece como piloto privado.
-- PortfolioControl aparece en desarrollo y sin demo pública.
 - Weapon Inspector aparece como proyecto histórico secundario con código y release públicos.
 - No se publican accesos internos, teléfono, RUT, dirección ni datos operativos.
 
 ## Contenido
 
 - Presentación y posicionamiento profesional.
-- Estado real de cuatro proyectos propios.
+- Estado real de tres proyectos propios.
+- Caso de estudio verificable del proyecto principal, con metodología, resultados y límites.
 - Trayectoria desde fundamentos de software hacia datos y machine learning.
 - Tecnologías agrupadas por evidencia de uso.
 - Formación universitaria y credencial pública de Kaggle.
@@ -54,7 +54,7 @@ npm test
 npm run lint
 ```
 
-Las pruebas compilan el sitio, renderizan la ruta principal y comprueban el contenido profesional, los metadatos, la ausencia de datos sensibles y los recursos públicos.
+Las pruebas compilan el sitio, renderizan la portada y el caso de estudio, y comprueban el contenido profesional, los metadatos, la ausencia de datos sensibles y los recursos públicos.
 
 Para producir el paquete estático usado por el VPS:
 
