@@ -17,7 +17,7 @@ El sitio está diseñado para presentar evidencia sin exagerar el nivel profesio
 - RutaCuadrilla demuestra reglas transaccionales e interfaces por rol con una demo local completamente sintética.
 - Operación Control aparece como piloto privado.
 - Weapon Inspector aparece como proyecto histórico secundario con código y release públicos.
-- No se publican accesos internos, teléfono, RUT, dirección ni datos operativos.
+- No se publican accesos internos, RUT, dirección particular ni datos operativos.
 
 ## Contenido
 
@@ -78,23 +78,24 @@ El sitio canónico se publica mediante el usuario SSH restringido `deploy`:
 
 El script verifica el proyecto, genera `deploy/`, crea una release versionada y actualiza atómicamente el enlace `current`. El procedimiento, las comprobaciones y el rollback están documentados en [docs/deployment-vps.md](docs/deployment-vps.md).
 
-## Generar el CV
+## Mantener el CV
 
-El archivo público está en `public/CV_Cristobal_Vergara.pdf`. La fuente reproducible utiliza ReportLab:
+La fuente aprobada está en `cv/CV_Cristobal_Vergara_ATS.docx` y la exportación pública en
+`public/CV_Cristobal_Vergara.pdf`. El documento es de una página, una sola columna y no usa
+tablas, fotografía ni RUT.
 
-```bash
-python scripts/create_cv.py
-```
-
-Después de generarlo, el PDF debe revisarse visualmente antes de reemplazar la versión publicada.
+Cada actualización debe editar primero el DOCX, exportar un PDF nuevo y comprobar visualmente
+la página completa y el orden del texto antes de reemplazar ambos archivos. El PDF no debe
+regenerarse desde fuentes históricas del CV.
 
 ## Estructura principal
 
 ```text
 app/                 página, layout y sistema visual
+cv/                  fuente ATS editable del currículum
 docs/                guía operativa de despliegue y rollback
 public/              fotografía, CV, favicon y tarjeta social
-scripts/             exportación, despliegue y generación del CV
+scripts/             exportación y despliegue
 tests/               comprobaciones del HTML renderizado
 .openai/hosting.json compatibilidad con el entorno de desarrollo
 ```
