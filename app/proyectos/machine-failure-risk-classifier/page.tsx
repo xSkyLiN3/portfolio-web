@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 const caseStudyPath = "/proyectos/machine-failure-risk-classifier";
@@ -16,14 +17,21 @@ export const metadata: Metadata = {
     title: "Caso de estudio — Machine Failure Risk Classifier",
     description:
       "Del contrato de datos a una demo pública: decisiones, evaluación, resultados y limitaciones de un clasificador educativo reproducible.",
-    images: [],
+    images: [
+      {
+        url: "https://nightstrike.cloud/projects/predictive-demo.png",
+        width: 1440,
+        height: 1110,
+        alt: "Interfaz de Machine Failure Risk Classifier",
+      },
+    ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Caso de estudio — Machine Failure Risk Classifier",
     description:
       "Decisiones, evaluación, resultados y límites de un clasificador educativo reproducible.",
-    images: [],
+    images: ["https://nightstrike.cloud/projects/predictive-demo.png"],
   },
 };
 
@@ -65,7 +73,7 @@ export default function MachineFailureRiskCaseStudy() {
       <main id="contenido" className="case-main">
         <section className="case-hero">
           <div className="case-hero-copy">
-            <p className="eyebrow">CASO DE ESTUDIO · RELEASE EDUCATIVO 1.0.0</p>
+            <p className="eyebrow">CASO DE ESTUDIO · RELEASE EDUCATIVO 1.0.1</p>
             <h1>Clasificar riesgo de falla sin ocultar la incertidumbre.</h1>
             <p className="case-lede">
               Machine Failure Risk Classifier es un proyecto individual de machine
@@ -73,6 +81,11 @@ export default function MachineFailureRiskCaseStudy() {
               llamativa, sino construir un proceso revisable: datos identificados,
               selección sin leakage, evaluación final única, API estricta y una demo
               que también sabe abstenerse.
+            </p>
+            <p className="case-lede">
+              La versión 1.0.1 llevó la interfaz, el contrato API y la documentación
+              pública canónica al inglés. El modelo, el umbral y la evaluación
+              congelada permanecieron sin cambios; el holdout no volvió a abrirse.
             </p>
             <div className="hero-actions">
               <a
@@ -93,7 +106,7 @@ export default function MachineFailureRiskCaseStudy() {
               </a>
               <a
                 className="text-link"
-                href="https://github.com/xSkyLiN3/predictive-maintenance-ml/blob/main/docs/MODEL_CARD.md"
+                href="https://github.com/xSkyLiN3/predictive-maintenance-ml/blob/v1.0.1/docs/MODEL_CARD.md"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -174,6 +187,19 @@ export default function MachineFailureRiskCaseStudy() {
                 máquina real.
               </p>
             </div>
+            <figure className="case-figure">
+              <Image
+                src="/projects/predictive-demo.png"
+                alt="Demo en inglés de Machine Failure Risk Classifier"
+                width={1440}
+                height={1110}
+                unoptimized
+              />
+              <figcaption>
+                Demo educativa en línea. Si la entrada sale de la referencia
+                marginal de training, la API se abstiene y no genera score.
+              </figcaption>
+            </figure>
           </div>
         </section>
 
@@ -202,7 +228,7 @@ export default function MachineFailureRiskCaseStudy() {
               <li>
                 <span>03</span>
                 <h3>Selección en training</h3>
-                <p>Cinco folds, tres baselines y un Pipeline que contiene el preprocesamiento.</p>
+                <p>Cinco folds, dos baselines y un random forest dentro del mismo contrato de evaluación.</p>
               </li>
               <li>
                 <span>04</span>
@@ -217,7 +243,7 @@ export default function MachineFailureRiskCaseStudy() {
               <li>
                 <span>06</span>
                 <h3>API verificable</h3>
-                <p>El artefacto congelado se valida al cargar y se abstiene fuera de su referencia.</p>
+                <p>La API valida el artefacto congelado al cargar y se abstiene fuera de la referencia.</p>
               </li>
             </ol>
 
@@ -346,7 +372,7 @@ export default function MachineFailureRiskCaseStudy() {
               <article className="case-panel">
                 <p className="card-eyebrow">ENTREGA</p>
                 <h3>Pruebas y contenedor</h3>
-                <p>La release pasa 227 pruebas, CI en Windows/Linux y se ejecuta en un contenedor mínimo con usuario no root.</p>
+                <p>La release pasa una suite automatizada, CI en Windows/Linux y se ejecuta en un contenedor mínimo con usuario no root.</p>
               </article>
             </div>
           </div>
@@ -407,14 +433,14 @@ export default function MachineFailureRiskCaseStudy() {
               <a href="https://github.com/xSkyLiN3/predictive-maintenance-ml" target="_blank" rel="noreferrer">
                 Repositorio <span aria-hidden="true">↗</span>
               </a>
-              <a href="https://github.com/xSkyLiN3/predictive-maintenance-ml/blob/main/docs/MODEL_CARD.md" target="_blank" rel="noreferrer">
+              <a href="https://github.com/xSkyLiN3/predictive-maintenance-ml/blob/v1.0.1/docs/MODEL_CARD.md" target="_blank" rel="noreferrer">
                 Model Card <span aria-hidden="true">↗</span>
               </a>
-              <a href="https://github.com/xSkyLiN3/predictive-maintenance-ml/blob/main/reports/modeling/b15bab7b54bc2e1f/M3_REPORT.md" target="_blank" rel="noreferrer">
+              <a href="https://github.com/xSkyLiN3/predictive-maintenance-ml/blob/v1.0.1/docs/EVALUATION_REPORT.md" target="_blank" rel="noreferrer">
                 Informe de evaluación <span aria-hidden="true">↗</span>
               </a>
-              <a href="https://github.com/xSkyLiN3/predictive-maintenance-ml/releases/tag/v1.0.0" target="_blank" rel="noreferrer">
-                Release v1.0.0 <span aria-hidden="true">↗</span>
+              <a href="https://github.com/xSkyLiN3/predictive-maintenance-ml/releases/tag/v1.0.1" target="_blank" rel="noreferrer">
+                Release v1.0.1 <span aria-hidden="true">↗</span>
               </a>
             </div>
           </div>

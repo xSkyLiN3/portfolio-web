@@ -50,11 +50,18 @@ $publicOrigin = "https://nightstrike.cloud"
 $requiredRelativeFiles = @(
     "index.html",
     "proyectos/machine-failure-risk-classifier/index.html",
+    "proyectos/retail-demand-forecasting/index.html",
+    "proyectos/rutacuadrilla/index.html",
     "site-version.json",
     "CV_Cristobal_Vergara.pdf",
     "cristobal-vergara.webp",
     "favicon.png",
     "og.png",
+    "projects/predictive-demo.png",
+    "projects/retail-dashboard.png",
+    "projects/retail-coverage.svg",
+    "projects/rutacuadrilla-admin.png",
+    "projects/rutacuadrilla-field.png",
     "robots.txt",
     "sitemap.xml"
 )
@@ -133,6 +140,8 @@ function Test-PublicSite {
     $paths = @(
         "/",
         "/proyectos/machine-failure-risk-classifier/",
+        "/proyectos/retail-demand-forecasting/",
+        "/proyectos/rutacuadrilla/",
         "/CV_Cristobal_Vergara.pdf"
     )
 
@@ -241,11 +250,18 @@ test -w "$root"
 test -d "$target"
 test -f "$target/index.html"
 test -f "$target/proyectos/machine-failure-risk-classifier/index.html"
+test -f "$target/proyectos/retail-demand-forecasting/index.html"
+test -f "$target/proyectos/rutacuadrilla/index.html"
 test -f "$target/site-version.json"
 test -f "$target/CV_Cristobal_Vergara.pdf"
 test -f "$target/cristobal-vergara.webp"
 test -f "$target/favicon.png"
 test -f "$target/og.png"
+test -f "$target/projects/predictive-demo.png"
+test -f "$target/projects/retail-dashboard.png"
+test -f "$target/projects/retail-coverage.svg"
+test -f "$target/projects/rutacuadrilla-admin.png"
+test -f "$target/projects/rutacuadrilla-field.png"
 test -f "$target/robots.txt"
 test -f "$target/sitemap.xml"
 
@@ -302,6 +318,10 @@ curl_common=(
 curl "${curl_common[@]}" --output /dev/null https://nightstrike.cloud/
 curl "${curl_common[@]}" --output /dev/null \
     https://nightstrike.cloud/proyectos/machine-failure-risk-classifier/
+curl "${curl_common[@]}" --output /dev/null \
+    https://nightstrike.cloud/proyectos/retail-demand-forecasting/
+curl "${curl_common[@]}" --output /dev/null \
+    https://nightstrike.cloud/proyectos/rutacuadrilla/
 curl "${curl_common[@]}" --output /dev/null \
     https://nightstrike.cloud/CV_Cristobal_Vergara.pdf
 version_payload="$(curl "${curl_common[@]}" https://nightstrike.cloud/site-version.json)"
@@ -559,11 +579,18 @@ tar --extract --gzip --file "$upload" --directory "$staging" \
 
 test -f "$staging/index.html"
 test -f "$staging/proyectos/machine-failure-risk-classifier/index.html"
+test -f "$staging/proyectos/retail-demand-forecasting/index.html"
+test -f "$staging/proyectos/rutacuadrilla/index.html"
 test -f "$staging/site-version.json"
 test -f "$staging/CV_Cristobal_Vergara.pdf"
 test -f "$staging/cristobal-vergara.webp"
 test -f "$staging/favicon.png"
 test -f "$staging/og.png"
+test -f "$staging/projects/predictive-demo.png"
+test -f "$staging/projects/retail-dashboard.png"
+test -f "$staging/projects/retail-coverage.svg"
+test -f "$staging/projects/rutacuadrilla-admin.png"
+test -f "$staging/projects/rutacuadrilla-field.png"
 test -f "$staging/robots.txt"
 test -f "$staging/sitemap.xml"
 test -z "$(find "$staging" -type l -print -quit)"
@@ -592,6 +619,10 @@ curl_common=(
 curl "${curl_common[@]}" --output /dev/null https://nightstrike.cloud/
 curl "${curl_common[@]}" --output /dev/null \
     https://nightstrike.cloud/proyectos/machine-failure-risk-classifier/
+curl "${curl_common[@]}" --output /dev/null \
+    https://nightstrike.cloud/proyectos/retail-demand-forecasting/
+curl "${curl_common[@]}" --output /dev/null \
+    https://nightstrike.cloud/proyectos/rutacuadrilla/
 curl "${curl_common[@]}" --output /dev/null \
     https://nightstrike.cloud/CV_Cristobal_Vergara.pdf
 version_payload="$(curl "${curl_common[@]}" https://nightstrike.cloud/site-version.json)"

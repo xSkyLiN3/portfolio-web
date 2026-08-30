@@ -4,7 +4,7 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "Software, datos y camino hacia AI/ML",
   description:
-    "Portafolio de Cristóbal Vergara, estudiante de Ingeniería en Informática con una demo pública de machine learning y proyectos propios de software.",
+    "Portafolio de Cristóbal Vergara: proyectos públicos de ML engineering, forecasting y sistemas full-stack con evidencia reproducible.",
 };
 
 const projects = [
@@ -15,10 +15,16 @@ const projects = [
     statusTone: "public",
     featured: true,
     wide: true,
+    image: {
+      src: "/projects/predictive-demo.png",
+      alt: "Interfaz en inglés de la demo Machine Failure Risk Classifier",
+      width: 1440,
+      height: 1110,
+    },
     description:
       "Sistema educativo de machine learning que clasifica casos según riesgo de falla a partir del dataset sintético AI4I. Incluye entrenamiento reproducible, prevención explícita de leakage, holdout reservado, API FastAPI y despliegue reproducible con Docker.",
     note:
-      "Resultado final: average precision 0,650 y recall 0,735 sobre un holdout final reservado de 2.000 filas. La puntuación no es una probabilidad calibrada; es evidencia técnica reproducible, no una validación para maquinaria real ni uso industrial.",
+      "Resultado congelado: average precision 0,650 y recall 0,735 sobre 2.000 filas. El score no es una probabilidad calibrada. La release v1.0.1 internacionaliza la superficie pública sin modificar el modelo ni reabrir el holdout; no es una validación industrial.",
     stack: ["Python", "scikit-learn", "FastAPI", "Docker", "pytest", "GitHub Actions"],
     links: [
       {
@@ -38,23 +44,102 @@ const projects = [
       },
       {
         label: "Leer Model Card",
-        href: "https://github.com/xSkyLiN3/predictive-maintenance-ml/blob/main/docs/MODEL_CARD.md",
+        href: "https://github.com/xSkyLiN3/predictive-maintenance-ml/blob/v1.0.1/docs/MODEL_CARD.md",
+        external: true,
+      },
+      {
+        label: "Release v1.0.1",
+        href: "https://github.com/xSkyLiN3/predictive-maintenance-ml/releases/tag/v1.0.1",
         external: true,
       },
     ],
   },
   {
-    eyebrow: "SISTEMA APLICADO",
+    eyebrow: "ML ENGINEERING · FORECASTING",
+    title: "Retail Demand Forecasting & Monitoring",
+    status: "Release pública · decisión no-go",
+    statusTone: "public",
+    featured: false,
+    wide: false,
+    image: {
+      src: "/projects/retail-dashboard.png",
+      alt: "Dashboard histórico de Retail Forecast Lab con métricas de cobertura, WAPE y sesgo",
+      width: 1265,
+      height: 712,
+    },
+    description:
+      "Caso end-to-end de forecasting con transacciones minoristas reales: backtesting temporal, gate de promoción, intervalos de predicción, persistencia PostgreSQL/JSON, API y dashboard de monitoreo.",
+    note:
+      "El holdout final obtuvo 77,02 % de cobertura frente al mínimo predefinido de 85 %. El proyecto conserva y publica ese resultado adverso: el modelo no fue aprobado para decisiones operacionales.",
+    stack: ["Python", "scikit-learn", "FastAPI", "PostgreSQL", "Docker", "GitHub Actions"],
+    links: [
+      {
+        label: "Leer caso de estudio",
+        href: "/proyectos/retail-demand-forecasting/",
+        external: false,
+      },
+      {
+        label: "Ver repositorio",
+        href: "https://github.com/xSkyLiN3/retail-demand-forecasting",
+        external: true,
+      },
+      {
+        label: "Release v1.0.0",
+        href: "https://github.com/xSkyLiN3/retail-demand-forecasting/releases/tag/v1.0.0",
+        external: true,
+      },
+    ],
+  },
+  {
+    eyebrow: "INGENIERÍA FULL-STACK · GEOESPACIAL",
+    title: "RutaCuadrilla",
+    status: "Release pública · demo local",
+    statusTone: "public",
+    featured: false,
+    wide: false,
+    image: {
+      src: "/projects/rutacuadrilla-admin.png",
+      alt: "Panel sintético de seguimiento de una ruta en RutaCuadrilla",
+      width: 1280,
+      height: 720,
+    },
+    description:
+      "Prototipo para asignar rutas a equipos de terreno y registrar visitas desde interfaces por rol. El dominio incorpora publicación idempotente, exclusividad de puntos, control optimista de concurrencia y persistencia PostgreSQL.",
+    note:
+      "La edición pública usa 72 puntos y geometrías 100 % sintéticas. Es un prototipo funcional de ingeniería; no incluye datos ni accesos del piloto privado y no afirma validación comercial.",
+    stack: ["TypeScript", "React", "Fastify", "PostgreSQL", "MapLibre", "Vitest"],
+    links: [
+      {
+        label: "Leer caso de estudio",
+        href: "/proyectos/rutacuadrilla/",
+        external: false,
+      },
+      {
+        label: "Ver repositorio",
+        href: "https://github.com/xSkyLiN3/rutacuadrilla",
+        external: true,
+      },
+      {
+        label: "Release v0.1.0",
+        href: "https://github.com/xSkyLiN3/rutacuadrilla/releases/tag/v0.1.0",
+        external: true,
+      },
+    ],
+  },
+  {
+    eyebrow: "SISTEMA APLICADO · CONTEXTO PRIVADO",
     title: "Operación Control",
     status: "Piloto privado",
     statusTone: "private",
     featured: false,
     wide: false,
+    image: null,
     description:
       "Piloto privado de gestión operativa desarrollado con Python, Flask y PostgreSQL. En este proyecto trabajo con permisos por rol, auditoría, exportaciones y despliegue en VPS.",
     note:
-      "Por confidencialidad, no hay demo ni datos públicos. Prepararé un caso anonimizado solo cuando pueda mostrar evidencia sin exponer información operativa.",
+      "Por confidencialidad, no se presenta como demo pública ni se exponen datos o accesos. Solo se publicará un caso anonimizado cuando exista evidencia segura y verificable.",
     stack: ["Python", "Flask", "PostgreSQL", "Docker", "Linux", "Nginx"],
+    links: [],
   },
   {
     eyebrow: "PROYECTO PÚBLICO HISTÓRICO",
@@ -63,6 +148,7 @@ const projects = [
     statusTone: "public",
     featured: false,
     wide: false,
+    image: null,
     description:
       "Plugin de AMX Mod X para Counter-Strike 1.6. Analiza secuencias de modelos y reproduce animaciones de inspección mediante configuración, caché y una API para otros plugins.",
     note:
@@ -87,12 +173,12 @@ const skillGroups = [
   {
     label: "DESARROLLO",
     title: "Lenguajes, web y datos",
-    items: ["Python", "TypeScript", "SQL", "PostgreSQL", "FastAPI", "Flask", "Next.js"],
+    items: ["Python", "TypeScript", "SQL", "PostgreSQL", "FastAPI", "Fastify", "React"],
   },
   {
     label: "CALIDAD Y DESPLIEGUE",
     title: "Entrega reproducible",
-    items: ["pytest", "GitHub Actions", "Docker", "Linux", "Nginx"],
+    items: ["pytest", "Vitest", "GitHub Actions", "Docker", "Linux", "Nginx"],
   },
   {
     label: "MACHINE LEARNING",
@@ -135,10 +221,10 @@ export default function Home() {
             <p className="eyebrow">CRISTÓBAL VERGARA · INGENIERÍA EN INFORMÁTICA</p>
             <h1>Construyo software reproducible y avanzo hacia AI/ML Engineering.</h1>
             <p className="lede">
-              Estudiante de 4.º semestre con proyectos propios en Python,
-              TypeScript y PostgreSQL. Mi trabajo principal es una demo pública
-              de machine learning con modelo, API, pruebas, contenedor y métricas
-              verificables.
+              Estudiante de 4.º semestre con tres proyectos públicos verificables
+              en machine learning, forecasting e ingeniería full-stack. Desarrollo
+              con Python, TypeScript y PostgreSQL, y documento resultados y límites
+              con el mismo cuidado que el código.
             </p>
             <div className="hero-actions">
               <a
@@ -186,7 +272,7 @@ export default function Home() {
         <section className="context-strip" aria-label="Resumen profesional">
           <div><strong>4.º semestre</strong><span>de 8 en Ingeniería Informática</span></div>
           <div><strong>Python · TypeScript</strong><span>PostgreSQL · SQL</span></div>
-          <div><strong>Demo ML pública</strong><span>modelo · API · Docker · CI</span></div>
+          <div><strong>3 releases públicas</strong><span>ML · forecasting · full-stack</span></div>
           <div><strong>AI/ML Engineering</strong><span>dirección profesional en desarrollo</span></div>
         </section>
 
@@ -200,14 +286,15 @@ export default function Home() {
               Soy estudiante de Ingeniería en Informática en la Universidad
               Bernardo O&apos;Higgins. Aprendo construyendo proyectos propios que
               abarcan backend, frontend, bases de datos, autenticación,
-              despliegue en VPS y, más recientemente, un sistema de machine
-              learning reproducible de extremo a extremo.
+              despliegue en VPS y sistemas de machine learning reproducibles de
+              extremo a extremo.
             </p>
             <p>
               Mi objetivo es avanzar hacia AI/ML Engineering con una base sólida
               de software, datos y evaluación. Por eso publico métricas,
-              limitaciones y decisiones técnicas, y distingo con claridad entre
-              una demo educativa, un piloto privado y un producto aún en desarrollo.
+              limitaciones y decisiones técnicas. Un buen resultado y una decisión
+              de no aprobación deben ser igual de auditables; también separo las
+              demos sintéticas de cualquier piloto privado.
             </p>
           </div>
         </section>
@@ -220,9 +307,9 @@ export default function Home() {
                 <h2 id="projects-title">Proyectos con contexto y estado real.</h2>
               </div>
               <p>
-                La demo principal puede probarse sin registro. Los demás proyectos
-                explican qué existe hoy, qué aprendí y por qué algunos accesos
-                permanecen privados.
+                Tres releases permiten revisar código, documentación y evidencia.
+                Solo Predictive tiene una demo pública en línea; Retail conserva un
+                resultado no-go y RutaCuadrilla ofrece una demo local sintética.
               </p>
             </div>
 
@@ -233,6 +320,7 @@ export default function Home() {
                     "project-card",
                     project.featured ? "project-card-featured" : "",
                     project.wide ? "project-card-wide" : "",
+                    project.image ? "project-card-has-image" : "",
                   ].filter(Boolean).join(" ")}
                   key={project.title}
                 >
@@ -240,6 +328,17 @@ export default function Home() {
                     <span className="project-number">0{index + 1}</span>
                     <span className={`status status-${project.statusTone}`}>{project.status}</span>
                   </div>
+                  {project.image && (
+                    <div className="project-visual">
+                      <Image
+                        src={project.image.src}
+                        alt={project.image.alt}
+                        width={project.image.width}
+                        height={project.image.height}
+                        unoptimized
+                      />
+                    </div>
+                  )}
                   <p className="card-eyebrow">{project.eyebrow}</p>
                   <h3>{project.title}</h3>
                   <p className="project-description">{project.description}</p>
@@ -247,7 +346,7 @@ export default function Home() {
                   <ul className="tag-list" aria-label={`Tecnologías de ${project.title}`}>
                     {project.stack.map((technology) => <li key={technology}>{technology}</li>)}
                   </ul>
-                  {"links" in project && (
+                  {project.links.length > 0 && (
                     <div className="project-links">
                       {project.links.map((link) => (
                         <a
@@ -290,7 +389,7 @@ export default function Home() {
             </li>
             <li>
               <span className="journey-index">03</span>
-              <div><h3>Datos y machine learning</h3><p>Primer sistema reproducible con baseline, prevención de leakage, holdout reservado, métricas y demo pública.</p></div>
+              <div><h3>Datos y machine learning</h3><p>Dos sistemas reproducibles: clasificación con demo pública y forecasting con una decisión no-go publicada.</p></div>
             </li>
           </ol>
         </section>

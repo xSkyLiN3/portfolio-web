@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/xSkyLiN3/portfolio-web/actions/workflows/ci.yml/badge.svg)](https://github.com/xSkyLiN3/portfolio-web/actions/workflows/ci.yml)
 
-Web personal y CV profesional de [Cristóbal Vergara](https://nightstrike.cloud), estudiante de Ingeniería en Informática con una demo pública de machine learning, proyectos propios de software y una dirección de aprendizaje hacia AI/ML Engineering.
+Web personal y CV profesional de [Cristóbal Vergara](https://nightstrike.cloud), estudiante de Ingeniería en Informática con tres releases públicas en machine learning, forecasting e ingeniería full-stack, y una dirección de aprendizaje hacia AI/ML Engineering.
 
 ![Vista social del portafolio](public/og.png)
 
@@ -11,8 +11,10 @@ Web personal y CV profesional de [Cristóbal Vergara](https://nightstrike.cloud)
 El sitio está diseñado para presentar evidencia sin exagerar el nivel profesional actual:
 
 - AI/ML se comunica como dirección profesional en desarrollo, no como cargo alcanzado.
-- Machine Failure Risk Classifier es el proyecto principal: demo pública, código, Model Card y release verificables.
+- Machine Failure Risk Classifier es el proyecto principal: demo pública, código, Model Card y release v1.0.1 verificables.
 - Sus métricas se presentan junto a su contexto: holdout final reservado de 2.000 filas y dataset sintético sin validación industrial.
+- Retail Demand Forecasting publica una decisión no-go después de fallar el guardrail de cobertura del holdout.
+- RutaCuadrilla demuestra reglas transaccionales e interfaces por rol con una demo local completamente sintética.
 - Operación Control aparece como piloto privado.
 - Weapon Inspector aparece como proyecto histórico secundario con código y release públicos.
 - No se publican accesos internos, teléfono, RUT, dirección ni datos operativos.
@@ -20,8 +22,8 @@ El sitio está diseñado para presentar evidencia sin exagerar el nivel profesio
 ## Contenido
 
 - Presentación y posicionamiento profesional.
-- Estado real de tres proyectos propios.
-- Caso de estudio verificable del proyecto principal, con metodología, resultados y límites.
+- Estado real de cinco proyectos propios, con tres releases públicas priorizadas.
+- Tres casos de estudio verificables, con metodología, resultados y límites.
 - Trayectoria desde fundamentos de software hacia datos y machine learning.
 - Tecnologías agrupadas por evidencia de uso.
 - Formación universitaria y credencial pública de Kaggle.

@@ -95,7 +95,14 @@ ssh -i "$env:USERPROFILE\.ssh\id_ed25519" -o BatchMode=yes `
 Comprobar los recursos públicos:
 
 ```powershell
-$paths = '/', '/proyectos/machine-failure-risk-classifier/', '/site-version.json', '/CV_Cristobal_Vergara.pdf'
+$paths = @(
+  '/',
+  '/proyectos/machine-failure-risk-classifier/',
+  '/proyectos/retail-demand-forecasting/',
+  '/proyectos/rutacuadrilla/',
+  '/site-version.json',
+  '/CV_Cristobal_Vergara.pdf'
+)
 foreach ($path in $paths) {
     (Invoke-WebRequest "https://nightstrike.cloud$path").StatusCode
 }

@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     template: "%s · Cristóbal Vergara",
   },
   description:
-    "Estudiante de Ingeniería en Informática con una demo pública de machine learning, proyectos propios de software y una dirección clara hacia AI/ML Engineering.",
+    "Estudiante de Ingeniería en Informática con proyectos públicos de ML engineering, forecasting y sistemas full-stack, y una dirección clara hacia AI/ML Engineering.",
   alternates: {
     canonical: "/",
   },
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     siteName: "Cristóbal Vergara",
     title: "Cristóbal Vergara — Software, datos y machine learning",
     description:
-      "Portafolio con una demo pública de machine learning y proyectos propios en Python, TypeScript y PostgreSQL.",
+      "Portafolio con proyectos verificables de machine learning, forecasting y desarrollo full-stack en Python, TypeScript y PostgreSQL.",
     images: [
       {
         url: "/og.png",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Cristóbal Vergara — Software, datos y machine learning",
     description:
-      "Portafolio con una demo pública de machine learning y proyectos propios en Python, TypeScript y PostgreSQL.",
+      "Portafolio con proyectos verificables de machine learning, forecasting y desarrollo full-stack en Python, TypeScript y PostgreSQL.",
     images: ["/og.png"],
   },
   icons: {

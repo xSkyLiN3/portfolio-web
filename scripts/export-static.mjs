@@ -39,8 +39,12 @@ const routes = [
       assert.match(html, /Machine Failure Risk Classifier/);
       assert.match(html, /https:\/\/ml\.nightstrike\.cloud/);
       assert.match(html, /dataset sintético AI4I/);
+      assert.match(html, /Retail Demand Forecasting/);
+      assert.match(html, /RutaCuadrilla/);
       assert.match(html, /Operación Control/);
       assert.match(html, /\/proyectos\/machine-failure-risk-classifier/);
+      assert.match(html, /\/proyectos\/retail-demand-forecasting/);
+      assert.match(html, /\/proyectos\/rutacuadrilla/);
     },
   },
   {
@@ -51,7 +55,28 @@ const routes = [
       assert.match(html, /Average Precision/);
       assert.match(html, /50 fallos detectados/);
       assert.match(html, /No está validado para maquinaria real ni decisiones de seguridad\./);
-      assert.match(html, /reports\/modeling\/b15bab7b54bc2e1f\/M3_REPORT\.md/);
+      assert.match(html, /docs\/EVALUATION_REPORT\.md/);
+      assert.match(html, /releases\/tag\/v1\.0\.1/);
+    },
+  },
+  {
+    pathname: "/proyectos/retail-demand-forecasting",
+    output: "proyectos/retail-demand-forecasting/index.html",
+    validate(html) {
+      assert.match(html, /Publicar un no-go también es ingeniería\./);
+      assert.match(html, /77,02 %/);
+      assert.match(html, /degraded_with_published_alerts/);
+      assert.match(html, /No está aprobado para compras, inventario ni decisiones comerciales\./);
+    },
+  },
+  {
+    pathname: "/proyectos/rutacuadrilla",
+    output: "proyectos/rutacuadrilla/index.html",
+    validate(html) {
+      assert.match(html, /Coordinar trabajo de campo sin perder el estado canónico\./);
+      assert.match(html, /72 puntos ficticios/);
+      assert.match(html, /Registrar una visita en Campo cambió el contador de Administración/);
+      assert.match(html, /Es un prototipo funcional, no un SaaS certificado/);
     },
   },
 ];
